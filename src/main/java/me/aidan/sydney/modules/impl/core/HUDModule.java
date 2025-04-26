@@ -215,7 +215,7 @@ public class HUDModule extends Module {
         Renderer2D.renderQuad(event.getMatrices(), 2, mc.getWindow().getScaledHeight() - chatOffset, mc.getWindow().getScaledWidth() - 2, mc.getWindow().getScaledHeight() + 12 - chatOffset, new Color(0, 0, 0, (int) (mc.options.getTextBackgroundOpacity().getValue() * 255)));
 
         if (watermark.getValue()) {
-            String text = watermarkText.getValue() + (watermarkVersion.getValue() ? (watermarkSync.getValue() ? "" : inversion.getValue() ? Formatting.GRAY : Formatting.WHITE) + " " + Sydney.MOD_VERSION + (watermarkMinecraftVersion.getValue() ? "-mc" + Sydney.MINECRAFT_VERSION : "") + (watermarkRevision.getValue() ? "+" + Sydney.GIT_REVISION + "." + Sydney.GIT_HASH : "") : "");
+            String text = watermarkText.getValue() + (watermarkVersion.getValue() ? (watermarkSync.getValue() ? "" : inversion.getValue() ? Formatting.GRAY : Formatting.WHITE) + " " + "v" + Sydney.MOD_VERSION + (watermarkMinecraftVersion.getValue() ? "-mc" + Sydney.MINECRAFT_VERSION : "") + (watermarkRevision.getValue() ? "+" + Sydney.GIT_REVISION + "." + Sydney.GIT_HASH : "") : "");
             drawText(event.getContext(), text, 2, 2);
         }
 
@@ -226,7 +226,7 @@ public class HUDModule extends Module {
 
         if (welcomer.getValue()) {
             String text = welcomerText.getValue().replace("[username]", (welcomerSync.getValue() ? "" : inversion.getValue() ? Formatting.GRAY : Formatting.WHITE) + mc.player.getName().getString() + Formatting.RESET);
-            drawText(event.getContext(), text, mc.getWindow().getScaledWidth() / 2.0f - Sydney.FONT_MANAGER.getWidth(text) / 2.0f, 6);
+            drawText(event.getContext(), text, mc.getWindow().getScaledWidth() / 2.0f - Sydney.FONT_MANAGER.getWidth(text) / 2.0f, 2);
         }
     }
 
@@ -407,7 +407,7 @@ public class HUDModule extends Module {
         int offset = 0;
 
         if (coordinates.getValue())  {
-            String text = getSecondary() + String.valueOf(mc.player.getBlockX()) + (netherCoordinates.getValue() ? Formatting.GRAY + " [" + getSecondary() + WorldUtils.getNetherPosition(mc.player.getBlockX()) + Formatting.GRAY + "]" : "") + (inversion.getValue() || positionSync.getValue() ? Formatting.RESET : Formatting.GRAY) + ", " + getSecondary() + mc.player.getBlockY() + (inversion.getValue() || positionSync.getValue() ? Formatting.RESET : Formatting.GRAY) + ", " + getSecondary() + mc.player.getBlockZ() + (netherCoordinates.getValue() ? Formatting.GRAY + " [" + getSecondary() + WorldUtils.getNetherPosition(mc.player.getBlockZ()) + Formatting.GRAY + "]" : "");
+            String text = getPrimary() + "XYZ " + Formatting.WHITE + String.valueOf(mc.player.getBlockX()) + ", " + String.valueOf(mc.player.getBlockY()) + ", " + String.valueOf(mc.player.getBlockZ()) + (this.netherCoordinates.getValue() ? Formatting.GRAY + " [" + Formatting.WHITE + WorldUtils.getNetherPosition(mc.player.getBlockX()) + ", " + WorldUtils.getNetherPosition(mc.player.getBlockZ()) + Formatting.GRAY + "]" : "");
 
             drawText(event.getContext(), text, 2, mc.getWindow().getScaledHeight() - chatOffset - offset - Sydney.FONT_MANAGER.getHeight() - 2);
             offset += Sydney.FONT_MANAGER.getHeight();

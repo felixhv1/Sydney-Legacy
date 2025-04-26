@@ -77,7 +77,7 @@ public abstract class Module implements IMinecraft {
             animationOffset.setEasing(Easing.Method.EASE_OUT_CUBIC);
 
             if (notify && chatNotify.getValue()) {
-                Sydney.CHAT_MANAGER.message(ChatUtils.getPrimary() + name + ChatUtils.getSecondary() + ".toggled = " + Formatting.GREEN + "true" + ChatUtils.getSecondary() + ";", "toggle-" + getName().toLowerCase());
+                Sydney.CHAT_MANAGER.message(ChatUtils.getPrimary() + name + ChatUtils.getSecondary() + " was " + Formatting.GREEN + "enabled" + ChatUtils.getSecondary() + ".", "toggle-" + getName().toLowerCase());
             }
 
             onEnable();
@@ -89,7 +89,7 @@ public abstract class Module implements IMinecraft {
             onDisable();
 
             if (notify && chatNotify.getValue()) {
-                Sydney.CHAT_MANAGER.message(ChatUtils.getPrimary() + name + ChatUtils.getSecondary() + ".toggled = " + Formatting.RED + "false" + ChatUtils.getSecondary() + ";", "toggle-" + getName().toLowerCase());
+                Sydney.CHAT_MANAGER.message(ChatUtils.getPrimary() + name + ChatUtils.getSecondary() + " was " + Formatting.RED + "enabled" + ChatUtils.getSecondary() + ".", "toggle-" + getName().toLowerCase());
             }
         }
     }
